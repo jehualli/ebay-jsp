@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE taglib
+    PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+    "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<!--
+  The tag library descriptor. Declares each tag's handler class, whether it
+  has a body, and every attribute: its name, whether it is required, and
+  whether it accepts a runtime expression (rtexprvalue) as opposed to only a
+  literal. Jasper validates pages against this at compile time.
+-->
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>ebay</short-name>
+  <uri>http://ebay.example.com/taglib</uri>
+  <description>Presentation tags for the auction site.</description>
+
+  <tag>
+    <name>money</name>
+    <tag-class>mx.jehualli.ebay.tags.MoneyTag</tag-class>
+    <body-content>empty</body-content>
+    <description>Formats a long of cents as $1,234.56</description>
+    <attribute>
+      <name>cents</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>timeLeft</name>
+    <tag-class>mx.jehualli.ebay.tags.TimeLeftTag</tag-class>
+    <body-content>empty</body-content>
+    <description>Countdown to an auction end, red inside the last hour</description>
+    <attribute>
+      <name>end</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>feedback</name>
+    <tag-class>mx.jehualli.ebay.tags.FeedbackTag</tag-class>
+    <body-content>empty</body-content>
+    <description>Member nick with feedback score and colour-tier star</description>
+    <attribute>
+      <name>user</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>link</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>esc</name>
+    <tag-class>mx.jehualli.ebay.tags.EscTag</tag-class>
+    <body-content>empty</body-content>
+    <description>HTML-escaped output</description>
+    <attribute>
+      <name>value</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>pageLinks</name>
+    <tag-class>mx.jehualli.ebay.tags.PageLinksTag</tag-class>
+    <body-content>empty</body-content>
+    <description>Previous / numbered / Next pagination strip</description>
+    <attribute>
+      <name>page</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>pages</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>base</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>loggedIn</name>
+    <tag-class>mx.jehualli.ebay.tags.LoggedInTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>Renders its body only for a signed-in member</description>
+  </tag>
+
+  <tag>
+    <name>anonymous</name>
+    <tag-class>mx.jehualli.ebay.tags.AnonymousTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>Renders its body only for a signed-out visitor</description>
+  </tag>
+
+</taglib>
